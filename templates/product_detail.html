@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} - Garnavi{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('index') }}" class="text-success">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('shop') }}" class="text-success">Shop</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Product Images -->
+        <div class="col-md-6">
+            <div class="product-main-image mb-4">
+                <img src="{{ product.images[0] }}" alt="{{ product.name }}" class="img-fluid rounded" id="mainImage">
+            </div>
+            <div class="product-thumbnails d-flex flex-wrap gap-2">
+                {% for image in product.images %}
+                <div class="thumbnail" style="width: 80px; height: 80px; cursor: pointer;">
+                    <img src="{{ image }}" alt="Thumbnail {{ loop.index }}" class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: cover;" onclick="changeImage(this.src)">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+            <h1 class="mb-3">{{ product.name }}</h1>
+            <p class="text-muted">{{ product.short_desc }}</p>
+            
+            <div class="d-flex align-items-center mb-3">
+                <h3 class="text-success me-3">{{ product.price_range }}</h3>
+                <span class="badge bg-success">Free Shipping</span>
+            </div>
+            
+            <div class="mb-4">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Free Lifetime Map Updates</span>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>1-Year Warranty</span>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>30-Day Money Back Guarantee</span>
+                </div>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex mb-4">
+                <button class="btn btn-success btn-lg flex-fill">
+                    <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                </button>
+                <button class="btn btn-outline-success btn-lg flex-fill">
+                    <i class="bi bi-heart me-2"></i>Add to Wishlist
+                </button>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-light-green">
+                    <h5 class="mb-0">Product Highlights</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ product.description }}</p>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check text-success me-2"></i>7-inch HD touch screen display</li>
+                        <li><i class="bi bi-check text-success me-2"></i>FM transmitter for audio through car speakers</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Preloaded with latest maps</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Multimedia playback support</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Voice-guided navigation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-light-green">
+                    <h3 class="mb-0">Specifications</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for key, value in product.specs.items() %}
+                        <div class="col-md-6 mb-3">
+                            <strong>{{ key }}:</strong> {{ value }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Why Choose Our GPS Navigator?</h2>
+            <div class="row">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-light-green rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="bi bi-geo-alt-fill text-success" style="font-size: 2rem;"></i>
+                    </div>
+                    <h5>Lifetime Map Updates</h5>
+                    <p>Always have the latest roads, points of interest, and navigation data with free lifetime updates.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-light-green rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="bi bi-mic-fill text-success" style="font-size: 2rem;"></i>
+                    </div>
+                    <h5>Voice Guidance</h5>
+                    <p>Clear voice instructions keep your eyes on the road while navigating to your destination.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-light-green rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="bi bi-music-note-beamed text-success" style="font-size: 2rem;"></i>
+                    </div>
+                    <h5>FM Transmitter</h5>
+                    <p>Play navigation instructions and music through your car's speakers with built-in FM transmitter.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-light-green">
+                    <h3 class="mb-0">Frequently Asked Questions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How often are map updates released?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We release map updates quarterly to ensure you always have the latest road information, points of interest, and navigation data.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Does this GPS work outside the country?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, our GPS devices come with preloaded maps for multiple regions. You can download additional maps for other countries through our update portal.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What is the warranty period?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    All our products come with a 1-year manufacturer warranty that covers defects and technical issues. We also offer a 30-day money-back guarantee.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function changeImage(src) {
+        document.getElementById('mainImage').src = src;
+    }
+    
+    // Add to cart functionality
+    document.querySelector('.btn-success').addEventListener('click', function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        
+        Toast.fire({
+            icon: 'success',
+            title: 'Product added to cart successfully!'
+        })
+    });
+</script>
+{% endblock %}

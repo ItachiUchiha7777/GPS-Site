@@ -1,0 +1,75 @@
+:root {
+    --primary-green: #198754;
+    --light-green: #d1e7dd;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-light-green {
+    background-color: var(--light-green);
+}
+
+.text-success {
+    color: var(--primary-green) !important;
+}
+
+.btn-success {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-success:hover {
+    background-color: #0f6840;
+    border-color: #0f6840;
+}
+
+.navbar-dark.bg-success {
+    background-color: var(--primary-green) !important;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+}
+
+
+
+
+.hero-section {
+    position: relative;
+}
+
+.min-vh-60 {
+    min-height: 60vh;
+}
+
+.hero-section .btn-success {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-section .btn-success:hover {
+    background-color: #0f6840;
+    border-color: #0f6840;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
