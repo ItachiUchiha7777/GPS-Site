@@ -233,7 +233,7 @@
                         <a class="nav-link {% if request.endpoint == 'shop' %}active{% endif %}" href="{{ url_for('shop') }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.endpoint == 'maps' %}active{% endif %}" href="#">Maps Updates</a>
+                        <a class="nav-link {% if request.endpoint == 'maps' %}active{% endif %}" href="{{ url_for('update') }}">Maps Updates</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contact</a>
