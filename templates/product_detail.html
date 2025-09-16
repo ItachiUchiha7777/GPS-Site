@@ -181,6 +181,32 @@
         </div>
     </div>
 </div>
+
+
+<!-- Related Products -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h2 class="text-success fw-bold">You May Also Like</h2>
+        </div>
+    </div>
+    <div class="row gx-4"> <!-- gx-4 = horizontal spacing -->
+        {% for rp in related_products %}
+        <div class="col-12 col-sm-6 col-md-3 mb-4">
+            <div class="card h-100">
+                <img src="{{ rp.images[0] }}" class="card-img-top" alt="{{ rp.name }}">
+                <div class="card-body">
+                    <h6 class="card-title">{{ rp.name }}</h6>
+                    <p class="text-success fw-bold">{{ rp.price_range }}</p>
+                    <a href="{{ url_for('product_detail', id=rp.id) }}" class="btn btn-outline-success btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock %}
 
 {% block scripts %}

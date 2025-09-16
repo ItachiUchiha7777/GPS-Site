@@ -7,7 +7,7 @@
         <div class="row align-items-center min-vh-60">
             <div class="col-lg-8 mx-auto text-center text-white">
                 <h1 class="display-3 fw-bold mb-4">Keep Your GPS Up-to-Date!</h1>
-                <p class="lead mb-4">Update Your Maps with Ease. Stay current with the latest maps and software updates from GetYourGps.</p>
+                <p class="lead mb-4">Update Your Maps with Ease. Stay current with the latest maps and software updates from NaviUpdate Pro.</p>
                 <p class="mb-5">Accurate and up-to-date navigation for a smooth and worry-free journey.</p>
                 <a href="#" class="btn btn-success btn-lg px-5 py-3">UPDATE YOUR GPS MAPS</a>
             </div>
@@ -23,28 +23,15 @@
                 <h2 class="text-success">About Us</h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md-6">
-                <p>At GetYourGps, we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</p>
+                <p>At NaviUpdate Pro, we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</p>
                 <p>Whether you're driving, sailing, cycling, or even playing golf, our expert team ensures your GPS device has the latest maps and software to guide you accurately. With years of experience and a strong focus on precision navigation, we deliver fast, dependable, and easy-to-use GPS update services tailored to your specific needs.</p>
+                <p>We offer clear, step-by-step guidance to help GPS users easily keep their devices current.</p>
+                <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At NaviUpdate Pro, we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
             </div>
             <div class="col-md-6">
-                <p>We offer clear, step-by-step guidance to help GPS users easily keep their devices current.</p>
-                <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At GetYourGps, we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
-                <!-- <a href="#" class="btn btn-outline-success mt-3">Learn More</a> -->
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Reviews Section -->
-<section class="bg-light py-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-12">
-                <h2 class="text-success mb-4">Trusted by Thousands</h2>
-                <p class="display-6 fw-bold text-success">100+ Reviews</p>
-                <a href="{{url_for('shop')}}" class="btn btn-success btn-lg mt-4">SHOP FOR LATEST GPS UNITS</a>
+                <img src="https://www.mozaweb.com/en/mozaik3D/FOL/tarsadalom/muholdas_navigacio/960.jpg" class="img-fluid rounded shadow" alt="GPS Navigation Device" style="height: 400px; width: 100%; object-fit: cover;">
             </div>
         </div>
     </div>
@@ -55,55 +42,32 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="text-success">Featured Products</h2>
+                <h2 class="text-success fw-bold">SHOP FOR LATEST GPS UNITS</h2>
             </div>
         </div>
         <div class="row">
-            <!-- Product 1 -->
+            {% for product in products %}
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://m.media-amazon.com/images/I/71AW2bkl6aL.jpg" class="card-img-top" alt="GPS Product">
+                    <img src="{{ product.images[0] }}" class="card-img-top" alt="{{ product.name }}">
                     <div class="card-body">
-                        <h5 class="card-title">7 Inch Car GPS Navigation</h5>
-                        <p class="card-text">HD TFT Touch Screen Car GetYourGps GPS Navigator 256MB+8G Portable Auto Satellite GPS Navigation</p>
-                        <p class="text-success fw-bold">$176.66 – $177.02</p>
-                       <a href="{{ url_for('product_detail', id=1) }}" class="btn btn-success">Select options</a>
-
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.short_desc }}</p>
+                        <p class="text-success fw-bold">{{ product.price_range }}</p>
+                        <a href="{{ url_for('product_detail', id=product.id) }}" class="btn btn-success">Select options</a>
                     </div>
                 </div>
             </div>
-            <!-- Product 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="https://garnavi.com/wp-content/uploads/2025/07/Sbaae5907a9494368bbe9cee01b7a40d1Y.webp" class="card-img-top" alt="GPS Product">
-                    <div class="card-body">
-                        <h5 class="card-title">GARNAVI 11.3 inch Car DVR 4K Dash Cam Dual Lens</h5>
-                        <p class="card-text">Wireless Carplay & Android Auto Video Recorder Monitor GPS Navigation 5G Wifi FM AUX</p>
-                        <p class="text-success fw-bold">$152.75 – $156.86</p>
-                         <a href="{{ url_for('product_detail', id=3) }}" class="btn btn-success">Select options</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="https://garnavi.com/wp-content/uploads/2025/07/Sf6498559343d4273b0607bdcc35a4b4e0.webp" class="card-img-top" alt="GPS Product">
-                    <div class="card-body">
-                        <h5 class="card-title">GARNAVI 5 Inch Car GPS Navigation 256MB+8G Sat Nav</h5>
-                        <p class="card-text">Voice Reminder Portable Navigator Mini USB TF EU AU North America Map Speeding Alarm</p>
-                        <p class="text-success fw-bold">$113.23 – $120.99</p>
-                         <a href="{{ url_for('product_detail', id=4) }}" class="btn btn-success">Select options</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <a href="#" class="btn btn-outline-success">View All Products</a>
+                <a href="{{ url_for('shop') }}" class="btn btn-outline-success">View All Products</a>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- Update Guide Section -->
 <section class="bg-light-green py-5">
@@ -240,6 +204,20 @@
     </div>
 </section>
 
+<!-- Disclaimer Section -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-success mb-3">Disclaimer</h4>
+                <p class="small text-muted">
+                    NaviUpdate Pro operates as an independent service provider dedicated to delivering informational resources and assistance for GPS navigation system updates. We maintain no affiliations, endorsements, or partnerships with GPS device manufacturers or their associated brands, and we make no claims of official relationships with companies whose devices may be referenced on our platform. Our services are designed exclusively to help users understand GPS map and software update procedures. All brand names, trademarks, and logos referenced are owned by their respective companies and are used solely for identification purposes. We are committed to full compliance with applicable legal requirements, including FTC guidelines, GDPR, CCPA, and related privacy and consumer protection regulations. For comprehensive details, please consult our Privacy Policy and Terms of Service.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Contact Section -->
 <section class="bg-light py-5">
     <div class="container">
@@ -274,29 +252,7 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <h2 class="text-success mb-4">Get In Touch With Us</h2>
-                <p>Contact us for assistance with updating your GPS maps.</p>
-                <div class="d-flex align-items-center mb-3">
-                    <i class="bi bi-geo-alt-fill text-success me-3 fs-4"></i>
-                    <div>
-                        <h5>Address</h5>
-                        <p>Westwood St. Hayward, California, 94544</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                    <i class="bi bi-telephone-fill text-success me-3 fs-4"></i>
-                    <div>
-                        <h5>Phone</h5>
-                        <p>18006115075</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                    <i class="bi bi-envelope-fill text-success me-3 fs-4"></i>
-                    <div>
-                        <h5>Email</h5>
-                        <p>info@GetYourGps.com</p>
-                    </div>
-                </div>
+                <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="img-fluid rounded shadow" alt="Customer Support" style="height: 100%; width: 100%; object-fit: cover; min-height: 400px;">
             </div>
         </div>
     </div>

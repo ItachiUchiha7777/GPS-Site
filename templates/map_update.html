@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}Maps Updates - GetYourGps{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-success text-white text-center py-5">
+  <div class="container">
+    <h1 class="fw-bold">Maps Updates</h1>
+    <p class="lead mt-3">Download Latest Maps Updates 2025</p>
+  </div>
+</section>
+
+<div class="container py-5">
+  <!-- Contact Form (stacked in one column) -->
+  <div id="formBlock" class="mx-auto" style="max-width:600px;">
+    <form class="row g-3">
+      <div class="col-12">
+        <label class="form-label">Your Name *</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Your Email *</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">GPS Name Or Model Number *</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Phone *</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" id="downloadBtn" class="btn btn-success btn-lg w-100">
+          Download Latest Maps Updates
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Error Block (hidden initially) -->
+  <div id="errorBlock" class="text-center p-5 d-none">
+    <h2 class="fw-bold text-danger">500 Internal Server Error!</h2>
+    <p class="mb-1">Server Encountered Error While Downloading The Files.</p>
+    <p class="mb-1">Updates Failed !</p>
+    <p class="fw-bold">Contact Support to Update Required Files.</p>
+  </div>
+</div>
+
+<script>
+  document.getElementById("downloadBtn").addEventListener("click", function() {
+    document.getElementById("formBlock").classList.add("d-none");
+    document.getElementById("errorBlock").classList.remove("d-none");
+  });
+</script>
+
+
+<!-- Guide Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">The Complete Guide to GPS Updates</h2>
+    <p class="lead text-center mb-5">
+      Keeping your GPS device updated is essential for accurate navigation, smarter route planning, 
+      and up-to-date information on new roads and points of interest. This all-in-one guide will take 
+      you step-by-step through the update process, covering a variety of GPS models and brands.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Easily Update Your Handheld GPS</h5>
+            <p class="card-text">Simply remove your GPS device from your vehicle, connect it to your computer with a USB cable, and install the latest maps in just a few clicks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Easily Update Your In-Dash GPS</h5>
+            <p class="card-text">Remove the SD card from your in-dash GPS system, insert it into a card reader, and connect it to your computer. Download and install the latest maps easily.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Stay on Course with Bike GPS Updates</h5>
+            <p class="card-text">Remove your GPS device from your bike, connect it to your computer, and install the newest map updates. Enjoy every ride with confidence!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Marine GPS Device Updates</h5>
+            <p class="card-text">Take the SD card from your marine GPS, insert it into a card reader, and connect it to your computer. Download the latest marine charts for safe sailing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Golf Watch Updates</h5>
+            <p class="card-text">Connect your Golf Buddy to your computer via USB. Check for the latest course maps and easily update your watch for accurate navigation on every round.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">GPS Map Updates Made Simple</h5>
+            <p class="card-text">Connect your GPS device, open your GPS management software, and follow on-screen instructions to install updates quickly and confidently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Info Cards -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-map fs-1 text-success"></i>
+            <h5 class="card-title mt-3">Latest Roads & Routes</h5>
+            <p class="card-text">Ensure your GPS includes all the newest highways, city roads, and updated routes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-geo-alt fs-1 text-success"></i>
+            <h5 class="card-title mt-3">Points of Interest</h5>
+            <p class="card-text">Get updated restaurants, fuel stations, hotels, and attractions near your routes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-arrow-repeat fs-1 text-success"></i>
+            <h5 class="card-title mt-3">Software Enhancements</h5>
+            <p class="card-text">Performance updates to improve accuracy, reduce lag, and enhance GPS stability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold text-success">Top 9 GPS Products</h2>
+    <div class="row g-4">
+      {% for product in products[:9] %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{{ product.images[0] }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.short_desc }}</p>
+            <p class="fw-bold text-success">{{ product.price_range }}</p>
+            <a href="{{ url_for('product_detail', id=product.id) }}" class="btn btn-success">View Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <a href="{{ url_for('shop') }}" class="btn btn-outline-success">View All Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
