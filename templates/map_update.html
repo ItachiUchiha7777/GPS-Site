@@ -3,20 +3,20 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="bg-light-green text-success text-center py-5">
+<!-- Hero Section with reduced bottom padding -->
+<section class="bg-light-green text-success text-center py-4">  <!-- Reduced from py-5 to py-4 -->
   <div class="container">
     <h1 class="fw-bold">Maps Updates</h1>
-    <p class="lead mt-3">Download Latest Maps Updates 2025</p>
+    <p class="lead mt-2">Download Latest Maps Updates 2025</p>  <!-- Reduced mt-3 to mt-2 -->
   </div>
 </section>
 
-<div class="container py-5">
+<div class="container pt-3 pb-5">  <!-- Reduced top padding from py-5 to pt-3 -->
   <div class="row">
     <!-- Form Section -->
     <div class="col-lg-6">
       <div id="formBlock">
-        <h2 class="mb-4 fw-bold">Request Your Map Update</h2>
+        <h2 class="mb-3 fw-bold">Request Your Map Update</h2>  <!-- Reduced mb-4 to mb-3 -->
         <form class="row g-3">
           <div class="col-12">
             <label class="form-label">Your Name *</label>
@@ -35,24 +35,29 @@
             <input type="text" class="form-control" required>
           </div>
           <div class="col-12 text-center">
-  <button type="button" id="downloadBtn" class="btn btn-primary-blue btn-lg w-50">
-    Download Update
-  </button>
-</div>
-
+            <button type="button" id="downloadBtn" class="btn btn-primary-blue btn-lg w-50">
+              Download Map Updates
+            </button>
+          </div>
         </form>
       </div>
 
       <!-- Error Block (hidden initially) -->
-      <div id="errorBlock" class="text-center p-4 mt-4 rounded d-none" style="background-color: #f8d7da; border: 1px solid #f5c6cb;">
-        <h2 class="fw-bold text-danger mb-3"><i class="bi bi-exclamation-triangle-fill me-2"></i>500 Internal Server Error!</h2>
-        <p class="mb-2">Server encountered an error while downloading the files.</p>
-        <p class="mb-2">Updates failed!</p>
-        <p class="fw-bold mb-3">Please contact support to update required files.</p>
-        <button type="button" id="tryAgainBtn" class="btn btn-primary-blue">
-          Try Again
-        </button>
-      </div>
+<div id="errorBlock" class="text-center p-4 mt-4 d-none">
+  <h2 class="fw-bold text-danger mb-3" style="font-size: 2.8rem; white-space: nowrap;">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>500 Internal Server Error!
+  </h2>
+  <p class="mb-2" style="font-size: 1.2rem;">Server encountered an error while downloading the files.</p>
+  <p class="mb-2" style="font-size: 1.2rem;">Updates failed!</p>
+  <p class="fw-bold mb-3" style="font-size: 1.2rem;">Please contact support to update required files.</p>
+
+  <a href="{{ url_for('contact') }}" class="btn btn-primary-blue btn-lg">
+    Contact Us
+  </a>
+</div>
+
+
+
     </div>
     
     <!-- Image Section -->
@@ -77,13 +82,14 @@
   });
 </script>
 
+<!-- The rest of your content remains unchanged -->
 <!-- Guide Section -->
 <section class="py-5">
   <div class="container">
     <div class="row mb-5">
       <div class="col-lg-8 mx-auto text-center">
         <h2 class="fw-bold mb-3">The Complete Guide to GPS Updates</h2>
-        <p class="lead">
+        <p class="">
           Keeping your GPS device updated is essential for accurate navigation, smarter route planning, 
           and up-to-date information on new roads and points of interest. This all-in-one guide will take 
           you step-by-step through the update process, covering a variety of GPS models and brands, so you're 
@@ -176,7 +182,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card h-100 shadow-sm text-center">
+        <div class="card h-100 shadow-sm text-center>
           <div class="card-body">
             <i class="bi bi-geo-alt fs-1 text-primary-blue"></i>
             <h5 class="card-title mt-3">Points of Interest</h5>
