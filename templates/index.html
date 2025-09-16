@@ -28,7 +28,7 @@
             <div class="col-md-6  fs-6">
                 <p style="font-size: 25px;"><b >At GetYourGps 
 , we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</b></p>
-                <p>Whether you're driving, sailing, cycling, or even playing golf, our expert team ensures your GPS device has the latest maps and software to guide you accurately. With years of experience and a strong focus on precision navigation, we deliver fast, dependable, and easy-to-use GPS update services tailored to your specific needs.</p>
+                <p class="mt-5">Whether you're driving, sailing, cycling, or even playing golf, our expert team ensures your GPS device has the latest maps and software to guide you accurately. With years of experience and a strong focus on precision navigation, we deliver fast, dependable, and easy-to-use GPS update services tailored to your specific needs.</p>
                 <p>We offer clear, step-by-step guidance to help GPS users easily keep their devices current.</p>
                 <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At GetYourGps
 , we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
@@ -209,19 +209,46 @@
 </section>
 
 <!-- Disclaimer Section -->
-<section class="py-4 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-               <h4 class="text-success mb-3 text-center">Disclaimer</h4>
+<section class="py-5" style="background: linear-gradient(to right, #f8f9fa, #ffffff);">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-11">
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-body p-5">
+            <!-- Title -->
+            <h3 class="text-success text-center fw-bold mb-4">
+              <i class="bi bi-shield-exclamation me-2"></i> Disclaimer
+            </h3>
 
-                <p class="medium text-muted">
-                    GetYourGps operates as an independent service provider dedicated to delivering informational resources and assistance for GPS navigation system updates. We maintain no affiliations, endorsements, or partnerships with GPS device manufacturers or their associated brands, and we make no claims of official relationships with companies whose devices may be referenced on our platform. Our services are designed exclusively to help users understand GPS map and software update procedures. All brand names, trademarks, and logos referenced are owned by their respective companies and are used solely for identification purposes. We are committed to full compliance with applicable legal requirements, including FTC guidelines, GDPR, CCPA, and related privacy and consumer protection regulations. For comprehensive details, please consult our Privacy Policy and Terms of Service.
-                </p>
-            </div>
+            <!-- Paragraphs -->
+            <p class="text-muted fw-bold mb-3" style="line-height: 1.8; font-size: 17px; text-align: justify;">
+              GetYourGps operates as an independent service provider dedicated to delivering
+              informational resources and assistance for GPS navigation system updates. 
+              We have no affiliations, endorsements, or partnerships with GPS device manufacturers or their brands.
+            </p>
+
+            <p class="text-muted fw-bold mb-3" style="line-height: 1.8; font-size: 17px; text-align: justify;">
+              Our services are designed solely to help users understand GPS map and software update procedures. 
+              All brand names, trademarks, and logos are the property of their respective owners 
+              and are used only for identification purposes.
+            </p>
+
+            <p class="text-muted fw-bold mb-0" style="line-height: 1.8; font-size: 17px; text-align: justify;">
+              We are fully committed to compliance with applicable legal requirements, including 
+              FTC guidelines, GDPR, and CCPA. 
+              For more details, please review our 
+              <a href="{{ url_for('privacy') }}" class="text-success fw-bold">Privacy Policy</a> 
+              and 
+              <a href="{{ url_for('terms') }}" class="text-success fw-bold">Terms of Service</a>.
+            </p>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
+git 
+
 
 <!-- Contact Section -->
 <section class="bg-light py-5">
