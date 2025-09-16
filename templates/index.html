@@ -2,13 +2,12 @@
 
 {% block content %}
 <!-- Hero Section -->
-<!-- Hero Section with Full Background Image -->
 <section class="hero-section py-5" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/premium-photo/pointing-finger-touching-control-panel-gps-map-display-screen-cars-dashboard_1013208-1999.jpg?w=360') no-repeat center center; background-size: cover;">
     <div class="container">
         <div class="row align-items-center min-vh-60">
             <div class="col-lg-8 mx-auto text-center text-white">
                 <h1 class="display-3 fw-bold mb-4">Keep Your GPS Up-to-Date!</h1>
-                <p class="lead mb-4">Update Your Maps with Ease. Stay current with the latest maps and software updates from Garnavi.</p>
+                <p class="lead mb-4">Update Your Maps with Ease. Stay current with the latest maps and software updates from GetYourGps.</p>
                 <p class="mb-5">Accurate and up-to-date navigation for a smooth and worry-free journey.</p>
                 <a href="#" class="btn btn-success btn-lg px-5 py-3">UPDATE YOUR GPS MAPS</a>
             </div>
@@ -26,13 +25,13 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p>At Garnavi, we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</p>
+                <p>At GetYourGps, we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</p>
                 <p>Whether you're driving, sailing, cycling, or even playing golf, our expert team ensures your GPS device has the latest maps and software to guide you accurately. With years of experience and a strong focus on precision navigation, we deliver fast, dependable, and easy-to-use GPS update services tailored to your specific needs.</p>
             </div>
             <div class="col-md-6">
                 <p>We offer clear, step-by-step guidance to help GPS users easily keep their devices current.</p>
-                <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At Garnavi, we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
-                <a href="#" class="btn btn-outline-success mt-3">Learn More</a>
+                <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At GetYourGps, we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
+                <!-- <a href="#" class="btn btn-outline-success mt-3">Learn More</a> -->
             </div>
         </div>
     </div>
@@ -45,7 +44,7 @@
             <div class="col-12">
                 <h2 class="text-success mb-4">Trusted by Thousands</h2>
                 <p class="display-6 fw-bold text-success">100+ Reviews</p>
-                <a href="#" class="btn btn-success btn-lg mt-4">SHOP FOR LATEST GPS UNITS</a>
+                <a href="{{url_for('shop')}}" class="btn btn-success btn-lg mt-4">SHOP FOR LATEST GPS UNITS</a>
             </div>
         </div>
     </div>
@@ -63,36 +62,37 @@
             <!-- Product 1 -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="GPS Product">
+                    <img src="https://m.media-amazon.com/images/I/71AW2bkl6aL.jpg" class="card-img-top" alt="GPS Product">
                     <div class="card-body">
                         <h5 class="card-title">7 Inch Car GPS Navigation</h5>
-                        <p class="card-text">HD TFT Touch Screen Car Garnavi GPS Navigator 256MB+8G Portable Auto Satellite GPS Navigation</p>
+                        <p class="card-text">HD TFT Touch Screen Car GetYourGps GPS Navigator 256MB+8G Portable Auto Satellite GPS Navigation</p>
                         <p class="text-success fw-bold">$176.66 – $177.02</p>
-                        <a href="#" class="btn btn-success">Select options</a>
+                       <a href="{{ url_for('product_detail', id=1) }}" class="btn btn-success">Select options</a>
+
                     </div>
                 </div>
             </div>
             <!-- Product 2 -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="GPS Product">
+                    <img src="https://garnavi.com/wp-content/uploads/2025/07/Sbaae5907a9494368bbe9cee01b7a40d1Y.webp" class="card-img-top" alt="GPS Product">
                     <div class="card-body">
-                        <h5 class="card-title">7 Inch HD Car GPS Navigation</h5>
-                        <p class="card-text">FM Transmitter Navigation System Touch Screen Portable Navigator Australia North America Europe Map</p>
-                        <p class="text-success fw-bold">$113.68 – $133.35</p>
-                        <a href="#" class="btn btn-success">Select options</a>
+                        <h5 class="card-title">GARNAVI 11.3 inch Car DVR 4K Dash Cam Dual Lens</h5>
+                        <p class="card-text">Wireless Carplay & Android Auto Video Recorder Monitor GPS Navigation 5G Wifi FM AUX</p>
+                        <p class="text-success fw-bold">$152.75 – $156.86</p>
+                         <a href="{{ url_for('product_detail', id=3) }}" class="btn btn-success">Select options</a>
                     </div>
                 </div>
             </div>
             <!-- Product 3 -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="GPS Product">
+                    <img src="https://garnavi.com/wp-content/uploads/2025/07/Sf6498559343d4273b0607bdcc35a4b4e0.webp" class="card-img-top" alt="GPS Product">
                     <div class="card-body">
-                        <h5 class="card-title">Garnavi 11.3 inch Car DVR 4K Dash Cam</h5>
-                        <p class="card-text">Dual Lens Wireless Carplay & Android Auto Video Recorder Monitor GPS Navigation 5G Wifi FM AUX</p>
-                        <p class="text-success fw-bold">$152.75 – $156.86</p>
-                        <a href="#" class="btn btn-success">Select options</a>
+                        <h5 class="card-title">GARNAVI 5 Inch Car GPS Navigation 256MB+8G Sat Nav</h5>
+                        <p class="card-text">Voice Reminder Portable Navigator Mini USB TF EU AU North America Map Speeding Alarm</p>
+                        <p class="text-success fw-bold">$113.23 – $120.99</p>
+                         <a href="{{ url_for('product_detail', id=4) }}" class="btn btn-success">Select options</a>
                     </div>
                 </div>
             </div>
@@ -115,30 +115,86 @@
             </div>
         </div>
         <div class="row">
+            <!-- Handheld GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Handheld GPS Update" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <i class="bi bi-geo-alt display-4 text-success mb-3"></i>
                         <h5 class="card-title">Handheld GPS Updates</h5>
                         <p class="card-text">Simply remove your GPS device from your vehicle, connect it to your computer with a USB cable, and install the latest maps in just a few clicks.</p>
+                        <div class="d-grid">
+                            <!-- <a href="#" class="btn btn-outline-success">Learn More</a> -->
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- In-Dash GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="In-Dash GPS System" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <i class="bi bi-car-front display-4 text-success mb-3"></i>
                         <h5 class="card-title">In-Dash GPS Updates</h5>
                         <p class="card-text">Remove the SD card from your in-dash GPS system, insert it into a card reader, and connect it to your computer to download the latest maps.</p>
+                        <div class="d-grid">
+                            <!-- <a href="#" class="btn btn-outline-success">Learn More</a> -->
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Bike GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
+                    <img src="https://m.media-amazon.com/images/I/71MshJ1WLIS._UF1000,1000_QL80_.jpg" class="card-img-top" alt="Bike GPS" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <i class="bi bi-bicycle display-4 text-success mb-3"></i>
                         <h5 class="card-title">Bike GPS Updates</h5>
                         <p class="card-text">Remove your GPS device from your bike, connect it to your computer with a USB cable, and easily install the newest map updates.</p>
+                        <div class="d-grid">
+                            <!-- <a href="#" class="btn btn-outline-success">Learn More</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marine GPS Update -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Marine GPS" style="height: 200px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Marine GPS Updates</h5>
+                        <p class="card-text">Take the SD card from your marine GPS, insert it into a card reader, and connect it to your computer. Download the latest marine charts for safe navigation.</p>
+                        <div class="d-grid">
+                            <!-- <a href="#" class="btn btn-outline-success">Learn More</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Golf Watch Update -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Golf GPS Watch" style="height: 200px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Golf Watch Updates</h5>
+                        <p class="card-text">Connect your Golf Buddy to your computer using a USB cable. Update your golf course maps for accurate navigation on every round.</p>
+                        <div class="d-grid">
+                            <!-- <a href="#" class="btn btn-outline-success">Learn More</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- General GPS Update -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://img.freepik.com/free-photo/closeup-details-cross-motorcycle-parked-ground_93675-134821.jpg    " class="card-img-top" alt="GPS Update Process" style="height: 200px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">GPS Map Updates Made Simple</h5>
+                        <p class="card-text">Connect your GPS device to your computer, open your GPS management software, and follow the on-screen instructions to install the latest map updates.</p>
+                        <div class="d-grid">
+                            <!-- <a href="#" class="btn btn-outline-success">Learn More</a> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -160,6 +216,7 @@
                 <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                     <h4 class="m-0">1</h4>
                 </div>
+                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded mb-3" alt="Connect GPS to computer" style="height: 200px; width: 100%; object-fit: cover;">
                 <h5>Plug-In / Connect Your Device</h5>
                 <p>Use a USB cable or SD card reader to connect your GPS unit to your computer.</p>
             </div>
@@ -167,6 +224,7 @@
                 <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                     <h4 class="m-0">2</h4>
                 </div>
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded mb-3" alt="GPS software interface" style="height: 200px; width: 100%; object-fit: cover;">
                 <h5>Launch the Update Software</h5>
                 <p>Open your GPS manufacturer's update software or visit the official website.</p>
             </div>
@@ -174,6 +232,7 @@
                 <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                     <h4 class="m-0">3</h4>
                 </div>
+                <img src="https://images.unsplash.com/photo-1611934180042-da791b4091e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded mb-3" alt="GPS update progress" style="height: 200px; width: 100%; object-fit: cover;">
                 <h5>Download and Install Updates</h5>
                 <p>Check for available map and software updates and follow the on-screen prompts.</p>
             </div>
@@ -235,7 +294,7 @@
                     <i class="bi bi-envelope-fill text-success me-3 fs-4"></i>
                     <div>
                         <h5>Email</h5>
-                        <p>info@garnavi.com</p>
+                        <p>info@GetYourGps.com</p>
                     </div>
                 </div>
             </div>
@@ -243,3 +302,19 @@
     </div>
 </section>
 {% endblock %}
+
+<style>
+.bg-light-green {
+    background-color: #f0f8f0;
+}
+.min-vh-60 {
+    min-height: 60vh;
+}
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+</style>

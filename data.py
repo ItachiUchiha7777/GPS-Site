@@ -7,7 +7,7 @@ products = [
         "price_min": 176.66,
         "price_max": 177.02,
         "images": [
-            "https://garnavi.com/wp-content/uploads/2025/07/S3fb9c8b74c0446fe824edc27af8a7c8fR.webp",
+            "https://m.media-amazon.com/images/I/71AW2bkl6aL.jpg",
             "https://ae01.alicdn.com/kf/S3ccf5f62f8fe49c79f2f05c3b836e5feF.jpg",
             "https://ae01.alicdn.com/kf/S49276b249c244807b035c35fd1c42bdeK.jpg",
             "https://ae01.alicdn.com/kf/S5ce57ff23318475da119bfc11cab2d18S.jpg",
@@ -36,7 +36,7 @@ products = [
         "price_min": 113.68,
         "price_max": 133.35,
         "images": [
-            "https://garnavi.com/wp-content/uploads/2025/07/Sc8a26641f76c4eb196e862cb7a04146ap.webp",
+            "https://m.media-amazon.com/images/I/511q9M5TmpL._UF1000,1000_QL80_.jpg",
             "https://garnavi.com/wp-content/uploads/2025/07/Sca9443204b5045878e1736fc6910751dm.webp",
             "https://garnavi.com/wp-content/uploads/2025/07/Sb3936feaf6a643fd8b1b20420f678f85z-768x768.webp",
             "https://garnavi.com/wp-content/uploads/2025/07/S30d1e1994b1b4c50a64c9f03f33e2999Y.webp",
