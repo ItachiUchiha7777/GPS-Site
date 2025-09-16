@@ -3,6 +3,21 @@
 {% block title %}{{ product.name }} - GetYourGps{% endblock %}
 
 {% block content %}
+<!-- Cart Success Toast Notification (hidden by default) -->
+<div id="cartToast" class="toast position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000" style="z-index: 9999;">
+  <div class="toast-header bg-success text-white">
+    <i class="bi bi-check-circle-fill me-2"></i>
+    <strong class="me-auto">Success!</strong>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    <p id="toastMessage">"<span id="productNameToast"></span>" has been added to your cart.</p>
+    <div class="mt-2 pt-2 border-top">
+      <a href="{{ url_for('cart') }}" class="btn btn-success btn-sm">View Cart</a>
+    </div>
+  </div>
+</div>
+
 <div class="container py-5">
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
@@ -54,7 +69,7 @@
             </div>
             
             <div class="d-grid gap-2 d-md-flex mb-4">
-                <button class="btn btn-success btn-lg flex-fill">
+                <button class="btn btn-success btn-lg flex-fill" onclick="addToCart({{ product.id }})">
                     <i class="bi bi-cart-plus me-2"></i>Add to Cart
                 </button>
                 <button class="btn btn-outline-success btn-lg flex-fill">
@@ -182,7 +197,6 @@
     </div>
 </div>
 
-
 <!-- Related Products -->
 <div class="container mt-5">
     <div class="row">
@@ -190,7 +204,7 @@
             <h2 class="text-success fw-bold">You May Also Like</h2>
         </div>
     </div>
-    <div class="row gx-4"> <!-- gx-4 = horizontal spacing -->
+    <div class="row gx-4">
         {% for rp in related_products %}
         <div class="col-12 col-sm-6 col-md-3 mb-4">
             <div class="card h-100">
@@ -205,8 +219,6 @@
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}
 
 {% block scripts %}
@@ -215,24 +227,58 @@
         document.getElementById('mainImage').src = src;
     }
     
-    // Add to cart functionality
-    document.querySelector('.btn-success').addEventListener('click', function() {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
+    // Cart functionality
+    function addToCart(productId) {
+        // Get current cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         
-        Toast.fire({
-            icon: 'success',
-            title: 'Product added to cart successfully!'
-        })
+        // Check if product already exists in cart
+        const existingItemIndex = cart.findIndex(item => item.id === productId);
+        
+        if (existingItemIndex !== -1) {
+            // If product exists, increase quantity
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            // If product doesn't exist, add it to cart
+            const productName = "{{ product.name }}";
+            const productPrice = {{ product.price_min }};
+            const productImage = "{{ product.images[0] }}";
+            
+            cart.push({
+                id: productId,
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            });
+        }
+        
+        // Save updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Update cart count in navbar
+        updateCartCount();
+        
+        // Show success toast
+        document.getElementById('productNameToast').textContent = "{{ product.name }}";
+        const toast = new bootstrap.Toast(document.getElementById('cartToast'));
+        toast.show();
+    }
+    
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        
+        // Update cart count in navbar
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        cartCountElements.forEach(element => {
+            element.textContent = totalItems;
+        });
+    }
+    
+    // Initialize cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
     });
 </script>
 {% endblock %}

@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from data import products  # Import products from data.py
+import random
 
 app = Flask(__name__)
 
@@ -31,8 +32,13 @@ def privacy():
 @app.route("/terms")
 def terms():
     return render_template('terms.html')
+@app.route('/cart')
+def cart():
+    return render_template('cart.html')
 
-import random
+@app.route('/checkout')
+def checkout():
+    return render_template('checkout.html')
 
 @app.route('/product/<int:id>')
 def product_detail(id):
