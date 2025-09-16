@@ -10,7 +10,6 @@ body {
     background-color: var(--light-blue);
 }
 
-/* Backgrounds */
 .bg-light-green {
     background-color: var(--light-blue) !important;
 }

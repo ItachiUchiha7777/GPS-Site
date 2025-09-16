@@ -11,41 +11,57 @@
   </div>
 </section>
 
-
 <div class="container py-5">
-  <!-- Contact Form (stacked in one column) -->
-  <div id="formBlock" class="mx-auto" style="max-width:600px;">
-    <form class="row g-3">
-      <div class="col-12">
-        <label class="form-label">Your Name *</label>
-        <input type="text" class="form-control" required>
+  <div class="row">
+    <!-- Form Section -->
+    <div class="col-lg-6">
+      <div id="formBlock">
+        <h2 class="mb-4 fw-bold">Request Your Map Update</h2>
+        <form class="row g-3">
+          <div class="col-12">
+            <label class="form-label">Your Name *</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Your Email *</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">GPS Name Or Model Number *</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Phone *</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-12 text-center">
+  <button type="button" id="downloadBtn" class="btn btn-primary-blue btn-lg w-50">
+    Download Update
+  </button>
+</div>
+
+        </form>
       </div>
-      <div class="col-12">
-        <label class="form-label">Your Email *</label>
-        <input type="email" class="form-control" required>
-      </div>
-      <div class="col-12">
-        <label class="form-label">GPS Name Or Model Number *</label>
-        <input type="text" class="form-control" required>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Phone *</label>
-        <input type="text" class="form-control" required>
-      </div>
-      <div class="col-12 text-center">
-        <button type="button" id="downloadBtn" class="btn btn-success btn-lg w-100">
-          Download Latest Maps Updates
+
+      <!-- Error Block (hidden initially) -->
+      <div id="errorBlock" class="text-center p-4 mt-4 rounded d-none" style="background-color: #f8d7da; border: 1px solid #f5c6cb;">
+        <h2 class="fw-bold text-danger mb-3"><i class="bi bi-exclamation-triangle-fill me-2"></i>500 Internal Server Error!</h2>
+        <p class="mb-2">Server encountered an error while downloading the files.</p>
+        <p class="mb-2">Updates failed!</p>
+        <p class="fw-bold mb-3">Please contact support to update required files.</p>
+        <button type="button" id="tryAgainBtn" class="btn btn-primary-blue">
+          Try Again
         </button>
       </div>
-    </form>
-  </div>
-
-  <!-- Error Block (hidden initially) -->
-  <div id="errorBlock" class="text-center p-5 d-none">
-    <h2 class="fw-bold text-danger">500 Internal Server Error!</h2>
-    <p class="mb-1">Server Encountered Error While Downloading The Files.</p>
-    <p class="mb-1">Updates Failed !</p>
-    <p class="fw-bold">Contact Support to Update Required Files.</p>
+    </div>
+    
+    <!-- Image Section -->
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <img src="https://www.artlebedev.com/shturmann/shturmann_photo.jpg" 
+             alt="GPS Navigation" class="img-fluid rounded shadow">
+      </div>
+    </div>
   </div>
 </div>
 
@@ -54,8 +70,12 @@
     document.getElementById("formBlock").classList.add("d-none");
     document.getElementById("errorBlock").classList.remove("d-none");
   });
+  
+  document.getElementById("tryAgainBtn").addEventListener("click", function() {
+    document.getElementById("formBlock").classList.remove("d-none");
+    document.getElementById("errorBlock").classList.add("d-none");
+  });
 </script>
-
 
 <!-- Guide Section -->
 <section class="py-5">
@@ -149,7 +169,7 @@
       <div class="col-md-4">
         <div class="card h-100 shadow-sm text-center">
           <div class="card-body">
-            <i class="bi bi-map fs-1 text-success"></i>
+            <i class="bi bi-map fs-1 text-primary-blue"></i>
             <h5 class="card-title mt-3">Latest Roads & Routes</h5>
             <p class="card-text">Ensure your GPS includes all the newest highways, city roads, and updated routes.</p>
           </div>
@@ -158,7 +178,7 @@
       <div class="col-md-4">
         <div class="card h-100 shadow-sm text-center">
           <div class="card-body">
-            <i class="bi bi-geo-alt fs-1 text-success"></i>
+            <i class="bi bi-geo-alt fs-1 text-primary-blue"></i>
             <h5 class="card-title mt-3">Points of Interest</h5>
             <p class="card-text">Get updated restaurants, fuel stations, hotels, and attractions near your routes.</p>
           </div>
@@ -167,7 +187,7 @@
       <div class="col-md-4">
         <div class="card h-100 shadow-sm text-center">
           <div class="card-body">
-            <i class="bi bi-arrow-repeat fs-1 text-success"></i>
+            <i class="bi bi-arrow-repeat fs-1 text-primary-blue"></i>
             <h5 class="card-title mt-3">Software Enhancements</h5>
             <p class="card-text">Performance updates to improve accuracy, reduce lag, and enhance GPS stability.</p>
           </div>
@@ -180,7 +200,7 @@
 <!-- Products Section -->
 <section class="py-5">
   <div class="container">
-    <h2 class="text-center mb-5 fw-bold text-success">Top 9 GPS Products</h2>
+    <h2 class="text-center mb-5 fw-bold text-primary-blue">Top 9 GPS Products</h2>
     <div class="row g-4">
       {% for product in products[:9] %}
       <div class="col-md-4">
@@ -189,8 +209,8 @@
           <div class="card-body text-center">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">{{ product.short_desc }}</p>
-            <p class="fw-bold text-success">{{ product.price_range }}</p>
-            <a href="{{ url_for('product_detail', id=product.id) }}" class="btn btn-success">View Details</a>
+            <p class="fw-bold text-primary-blue">{{ product.price_range }}</p>
+            <a href="{{ url_for('product_detail', id=product.id) }}" class="btn btn-primary-blue">View Details</a>
           </div>
         </div>
       </div>
@@ -198,10 +218,37 @@
     </div>
     <div class="row mt-4">
       <div class="col-12 text-center">
-        <a href="{{ url_for('shop') }}" class="btn btn-outline-success">View All Products</a>
+        <a href="{{ url_for('shop') }}" class="btn btn-outline-primary-blue">View All Products</a>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .btn-primary-blue {
+    background-color: #438dee;
+    border-color: #438dee;
+    color: white;
+  }
+  
+  .btn-primary-blue:hover {
+    background-color: #2f6ed3;
+    border-color: #2f6ed3;
+  }
+  
+  .btn-outline-primary-blue {
+    color: #438dee;
+    border-color: #438dee;
+  }
+  
+  .btn-outline-primary-blue:hover {
+    background-color: #438dee;
+    color: white;
+  }
+  
+  .text-primary-blue {
+    color: #438dee !important;
+  }
+</style>
 
 {% endblock %}
