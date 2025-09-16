@@ -1,53 +1,71 @@
 :root {
-    --primary-green: #438dee;
-    --light-green: #eaf2f5;
+    --primary-blue: #438dee;      /* Primary color for text, buttons, navbar */
+    --primary-hover: #2f6ed3;     /* Darker blue for hover states */
+    --light-blue: #eaf2f5;        /* Light background */
+    --card-shadow: rgba(0, 0, 0, 0.1); /* Card shadow */
 }
-
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-blue);
 }
 
+/* Backgrounds */
 .bg-light-green {
-    background-color: var(--light-green);
+    background-color: var(--light-blue) !important;
 }
 
+/* Text */
 .text-success {
-    color: var(--primary-green) !important;
+    color: var(--primary-blue) !important;
 }
 
+/* Buttons */
 .btn-success {
-    background-color: var(--primary-green);
-    border-color: var(--primary-green);
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .btn-success:hover {
-    background-color: #0f6840;
-    border-color: #0f6840;
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(67, 141, 238, 0.3);
 }
 
+/* Navbar */
 .navbar-dark.bg-success {
-    background-color: var(--primary-green) !important;
+    background-color: var(--primary-blue) !important;
 }
 
+/* Cards */
 .card {
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 0.5rem;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px var(--card-shadow);
 }
 
+/* Step numbers */
 .step-number {
     width: 60px;
     height: 60px;
     font-size: 24px;
+    background-color: var(--primary-blue);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
-
-
-
+/* Hero section */
 .hero-section {
     position: relative;
 }
@@ -57,19 +75,18 @@ body {
 }
 
 .hero-section .btn-success {
-    background-color: var(--primary-green);
-    border-color: var(--primary-green);
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
 }
 
 .hero-section .btn-success:hover {
-    background-color: #0f6840;
-    border-color: #0f6840;
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
+    box-shadow: 0 6px 20px rgba(67, 141, 238, 0.3);
 }
 
+/* Text shadow */
 .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }

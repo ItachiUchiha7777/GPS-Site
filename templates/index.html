@@ -7,9 +7,10 @@
         <div class="row align-items-center min-vh-60">
             <div class="col-lg-8 mx-auto text-center text-white">
                 <h1 class="display-3 fw-bold mb-4">Keep Your GPS Up-to-Date!</h1>
-                <p class="lead mb-4">Update Your Maps with Ease. Stay current with the latest maps and software updates from NaviUpdate Pro.</p>
+                <p class="lead mb-4">Update Your Maps with Ease. Stay current with the latest maps and software updates from GetYourGps
+.</p>
                 <p class="mb-5">Accurate and up-to-date navigation for a smooth and worry-free journey.</p>
-                <a href="#" class="btn btn-success btn-lg px-5 py-3">UPDATE YOUR GPS MAPS</a>
+                <a href="{{url_for('update')}}" class="btn btn-success btn-lg px-5 py-3">UPDATE YOUR GPS MAPS</a>
             </div>
         </div>
     </div>
@@ -20,15 +21,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="text-success">About Us</h2>
+                <h2 class="text-success">ABOUT US</h2>
             </div>
         </div>
         <div class="row align-items-center">
-            <div class="col-md-6">
-                <p>At NaviUpdate Pro, we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</p>
+            <div class="col-md-6  fs-2.5">
+                <p>At GetYourGps
+, we're committed to keeping you on track with the most up-to-date GPS updates and navigation solutions.</p>
                 <p>Whether you're driving, sailing, cycling, or even playing golf, our expert team ensures your GPS device has the latest maps and software to guide you accurately. With years of experience and a strong focus on precision navigation, we deliver fast, dependable, and easy-to-use GPS update services tailored to your specific needs.</p>
                 <p>We offer clear, step-by-step guidance to help GPS users easily keep their devices current.</p>
-                <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At NaviUpdate Pro, we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
+                <p>Stay up-to-date and enjoy smooth, stress-free travel with the latest maps and software. At GetYourGps
+, we specialize in making sure your GPS is always ready to lead you in the right direction.</p>
             </div>
             <div class="col-md-6">
                 <img src="https://www.mozaweb.com/en/mozaik3D/FOL/tarsadalom/muholdas_navigacio/960.jpg" class="img-fluid rounded shadow" alt="GPS Navigation Device" style="height: 400px; width: 100%; object-fit: cover;">
@@ -51,7 +54,8 @@
                 <div class="card h-100">
                     <img src="{{ product.images[0] }}" class="card-img-top" alt="{{ product.name }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
+                        <h5 class="card-title fw-bold">{{ product.name }}</h5>
+
                         <p class="card-text">{{ product.short_desc }}</p>
                         <p class="text-success fw-bold">{{ product.price_range }}</p>
                         <a href="{{ url_for('product_detail', id=product.id) }}" class="btn btn-success">Select options</a>
@@ -82,7 +86,7 @@
             <!-- Handheld GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Handheld GPS Update" style="height: 200px; object-fit: cover;">
+                    <img src="https://d1nymbkeomeoqg.cloudfront.net/videos/3/34/154954_7279.jpg" class="card-img-top" alt="Handheld GPS Update" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Handheld GPS Updates</h5>
                         <p class="card-text">Simply remove your GPS device from your vehicle, connect it to your computer with a USB cable, and install the latest maps in just a few clicks.</p>
@@ -96,7 +100,7 @@
             <!-- In-Dash GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="In-Dash GPS System" style="height: 200px; object-fit: cover;">
+                    <img src="https://images.crutchfieldonline.com/ImageBank/v20240530124200/core/learn/article/1116/XAV-AX8500_Navigation_CarPlay_mobile.jpg" class="card-img-top" alt="In-Dash GPS System" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">In-Dash GPS Updates</h5>
                         <p class="card-text">Remove the SD card from your in-dash GPS system, insert it into a card reader, and connect it to your computer to download the latest maps.</p>
@@ -110,7 +114,7 @@
             <!-- Bike GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://m.media-amazon.com/images/I/71MshJ1WLIS._UF1000,1000_QL80_.jpg" class="card-img-top" alt="Bike GPS" style="height: 200px; object-fit: cover;">
+                    <img src="https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/11/2014/10/Garmin-Edge-Touring-GPS-e1595590897711-600x400.jpg" class="card-img-top" alt="Bike GPS" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Bike GPS Updates</h5>
                         <p class="card-text">Remove your GPS device from your bike, connect it to your computer with a USB cable, and easily install the newest map updates.</p>
@@ -124,7 +128,7 @@
             <!-- Marine GPS Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Marine GPS" style="height: 200px; object-fit: cover;">
+                    <img src="https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/11/2014/10/Garmin-Edge-Touring-GPS-e1595590897711-600x400.jpg" class="card-img-top" alt="Marine GPS" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Marine GPS Updates</h5>
                         <p class="card-text">Take the SD card from your marine GPS, insert it into a card reader, and connect it to your computer. Download the latest marine charts for safe navigation.</p>
@@ -138,7 +142,7 @@
             <!-- Golf Watch Update -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Golf GPS Watch" style="height: 200px; object-fit: cover;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkBAurtrde8sk7pV2Us0mARLgzJTfaDKxq3g&s" class="card-img-top" alt="Golf GPS Watch" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Golf Watch Updates</h5>
                         <p class="card-text">Connect your Golf Buddy to your computer using a USB cable. Update your golf course maps for accurate navigation on every round.</p>
@@ -180,7 +184,7 @@
                 <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                     <h4 class="m-0">1</h4>
                 </div>
-                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded mb-3" alt="Connect GPS to computer" style="height: 200px; width: 100%; object-fit: cover;">
+                <img src="https://d1nymbkeomeoqg.cloudfront.net/photos/30/72/428733_12283_XL.jpg" class="img-fluid rounded mb-3" alt="Connect GPS to computer" style="height: 200px; width: 100%; object-fit: cover;">
                 <h5>Plug-In / Connect Your Device</h5>
                 <p>Use a USB cable or SD card reader to connect your GPS unit to your computer.</p>
             </div>
@@ -188,7 +192,7 @@
                 <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                     <h4 class="m-0">2</h4>
                 </div>
-                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded mb-3" alt="GPS software interface" style="height: 200px; width: 100%; object-fit: cover;">
+                <img src="https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwwfHwwfHx8MA%3D%3D" class="img-fluid rounded mb-3" alt="GPS software interface" style="height: 200px; width: 100%; object-fit: cover;">
                 <h5>Launch the Update Software</h5>
                 <p>Open your GPS manufacturer's update software or visit the official website.</p>
             </div>
@@ -196,7 +200,7 @@
                 <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                     <h4 class="m-0">3</h4>
                 </div>
-                <img src="https://images.unsplash.com/photo-1611934180042-da791b4091e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded mb-3" alt="GPS update progress" style="height: 200px; width: 100%; object-fit: cover;">
+                <img src="https://media.product.which.co.uk/prod/images/original/a486dc5ad896-downloading.jpg" class="img-fluid rounded mb-3" alt="GPS update progress" style="height: 200px; width: 100%; object-fit: cover;">
                 <h5>Download and Install Updates</h5>
                 <p>Check for available map and software updates and follow the on-screen prompts.</p>
             </div>
