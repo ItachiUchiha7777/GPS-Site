@@ -22,13 +22,13 @@ app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', app.co
 mail = Mail(app)
 
 
-# Email utility functions
+# Email utility function - only send to admin
 def send_email_to_admin(subject, body, sender_email, sender_name):
-    """Send form data to your email"""
+    """Send form data to your email only"""
     try:
         msg = Message(
             subject=f"Website Contact: {subject}",
-            recipients=[app.config['MAIL_USERNAME']],  # Your email
+            recipients=[app.config['MAIL_USERNAME']],  # Your email only
             body=f"""
             New contact form submission:
             
@@ -43,30 +43,6 @@ def send_email_to_admin(subject, body, sender_email, sender_name):
         return True
     except Exception as e:
         print(f"Error sending email to admin: {e}")
-        return False
-
-def send_confirmation_to_user(subject, body, recipient_email, recipient_name):
-    """Send confirmation email to the user"""
-    try:
-        msg = Message(
-            subject="Thank you for contacting GetYourGps",
-            recipients=[recipient_email],
-            body=f"""
-            Dear {recipient_name},
-            
-            Thank you for contacting GetYourGps. We have received your message and will get back to you shortly.
-            
-            Your message:
-            {body}
-            
-            Best regards,
-            The GetYourGps Team
-            """
-        )
-        mail.send(msg)
-        return True
-    except Exception as e:
-        print(f"Error sending confirmation email: {e}")
         return False
 
 # Your existing routes
@@ -105,11 +81,10 @@ def contact():
         {message}
         """
         
-        # Send emails
+        # Send email only to admin
         admin_sent = send_email_to_admin(subject, full_message, email, full_name)
-        user_sent = send_confirmation_to_user(subject, message, email, full_name)
         
-        if admin_sent and user_sent:
+        if admin_sent:
             flash('Your message has been sent successfully! We will get back to you soon.', 'success')
         else:
             flash('There was an error sending your message. Please try again later.', 'error')
@@ -193,14 +168,11 @@ def checkout():
         
         full_message += f"\n\nTotal: ${total:.2f}"
         
-        # Send emails
+        # Send email only to admin
         admin_sent = send_email_to_admin("New Order", full_message, email, full_name)
-        user_sent = send_confirmation_to_user("Order Confirmation", 
-                                             f"Thank you for your order. We will process it shortly.\n\nOrder Details:\n{full_message}", 
-                                             email, full_name)
         
-        if admin_sent and user_sent:
-            flash('Your order has been placed successfully! You will receive a confirmation email shortly.', 'success')
+        if admin_sent:
+            flash('Your order has been placed successfully! We will get back to you soon.', 'success')
             # Clear cart from localStorage using JavaScript
             return render_template('checkout_success.html')
         else:
@@ -209,6 +181,7 @@ def checkout():
         return redirect(url_for('checkout'))
     
     return render_template('checkout.html')
+
 @app.route('/map-update-submit', methods=['POST'])
 def map_update_submit():
     # Get form data
@@ -227,13 +200,10 @@ def map_update_submit():
     Phone: {phone}
     """
     
-    # Send emails
+    # Send email only to admin
     admin_sent = send_email_to_admin("Map Update Request", full_message, email, name)
-    user_sent = send_confirmation_to_user("Map Update Request Received", 
-                                         f"Thank you for your map update request. We will process it shortly.\n\nRequest Details:\n{full_message}", 
-                                         email, name)
     
-    if admin_sent and user_sent:
+    if admin_sent:
         # Return JSON response for AJAX handling
         return {'status': 'error', 'message': '500 Internal Server Error! Server encountered an error while downloading the files. Updates failed! Please contact support to update required files.'}
     else:
