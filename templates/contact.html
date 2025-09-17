@@ -91,48 +91,49 @@
                 <h2 class="text-success mb-4">Send Us a Message</h2>
                 <p class="mb-4">Have questions about GPS updates? Fill out the form below and our team will get back to you shortly.</p>
                 
-                <form>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="firstName" class="form-label">First Name *</label>
-                            <input type="text" class="form-control" id="firstName" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="lastName" class="form-label">Last Name *</label>
-                            <input type="text" class="form-control" id="lastName" required>
-                        </div>
-                    </div>
-                    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="email" class="form-label">Email Address *</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone">
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Subject</label>
-                        <select class="form-select" id="subject">
-                            <option selected>Select a subject</option>
-                            <option value="gps-update">GPS Update Assistance</option>
-                            <option value="product-info">Product Information</option>
-                            <option value="technical-support">Technical Support</option>
-                            <option value="billing">Billing Question</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="message" class="form-label">Message *</label>
-                        <textarea class="form-control" id="message" rows="5" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-success btn-lg">Send Message</button>
-                </form>
+                <form action="{{ url_for('contact') }}" method="POST">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name *</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name *</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email Address *</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="col-md-6">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <select class="form-select" id="subject" name="subject">
+            <option selected>Select a subject</option>
+            <option value="gps-update">GPS Update Assistance</option>
+            <option value="product-info">Product Information</option>
+            <option value="technical-support">Technical Support</option>
+            <option value="billing">Billing Question</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label for="message" class="form-label">Message *</label>
+        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-lg">Send Message</button>
+</form>
+
             </div>
             
             <!-- Image Section -->

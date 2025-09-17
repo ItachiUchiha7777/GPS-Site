@@ -256,31 +256,31 @@
             <div class="col-md-6">
                 <h2 class="text-success mb-4">Contact Us</h2>
                 <p>Get In touch with us if you face any problem updating your GPS maps.</p>
-                <form>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" required>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input type="tel" class="form-control" id="phone">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Comment or Message</label>
-                        <textarea class="form-control" id="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
+                <form method="POST" action="{{ url_for('contact') }}">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" name="phone">
+    </div>
+    <div class="mb-3">
+        <label for="message" class="form-label">Comment or Message</label>
+        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
             </div>
             <div class="col-md-6">
                 <img src="https://www.zoomotech.com.my/wp-content/uploads/2024/09/smartphone-navigation-concept-on-digital-map2-1400-1400.jpg" class="img-fluid rounded shadow" alt="Customer Support" style="height: 100%; width: 100%; object-fit: cover; min-height: 400px;">

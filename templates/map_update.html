@@ -15,53 +15,85 @@
   <div class="row">
     <!-- Form Section -->
     <div class="col-lg-6">
-      <div id="formBlock">
-        <h2 class="mb-3 fw-bold">Request Your Map Update</h2>  <!-- Reduced mb-4 to mb-3 -->
-        <form class="row g-3">
-          <div class="col-12">
-            <label class="form-label">Your Name *</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="col-12">
-            <label class="form-label">Your Email *</label>
-            <input type="email" class="form-control" required>
-          </div>
-          <div class="col-12">
-            <label class="form-label">GPS Name Or Model Number *</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="col-12">
-            <label class="form-label">Phone *</label>
-            <input type="text" class="form-control" required>
-          </div>
-          <div class="col-12 text-center">
-            <button type="button" id="downloadBtn" class="btn btn-primary-blue btn-lg w-50">
-              Download Map Updates
-            </button>
-          </div>
-        </form>
+  <div id="formBlock">
+    <h2 class="mb-3 fw-bold">Request Your Map Update</h2>
+    <form class="row g-3" method="POST" action="{{ url_for('map_update_submit') }}">
+      <div class="col-12">
+        <label class="form-label">Your Name *</label>
+        <input type="text" class="form-control" name="name" required>
       </div>
+      <div class="col-12">
+        <label class="form-label">Your Email *</label>
+        <input type="email" class="form-control" name="email" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">GPS Name Or Model Number *</label>
+        <input type="text" class="form-control" name="gpsModel" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Phone *</label>
+        <input type="text" class="form-control" name="phone" required>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary-blue btn-lg w-50">
+          Download Map Updates
+        </button>
+      </div>
+    </form>
+  </div>
 
-      <!-- Error Block (hidden initially) -->
-      <div id="errorBlock" class="text-center p-4 mt-4 d-none" style="">
-        <h2 class="fw-bold text-danger mb-3" style="font-size: 40px;">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>500 Internal Server Error!
-        </h2>
-        <p class="mb-2">Server encountered an error while downloading the files.</p>
-        <p class="mb-2">Updates failed!</p>
-        <p class="fw-bold mb-3">Please contact support to update required files.</p>
-        
-        <div class="d-flex justify-content-center gap-3">
-          <a href="{{ url_for('contact') }}" class="btn btn-primary-blue">
-            Contact Us
-          </a>
-          <!-- <button type="button" id="tryAgainBtn" class="btn btn-outline-primary-blue">
-            Try Again
-          </button> -->
-        </div>
-      </div>
-    </div>
+  <!-- Error Block (hidden initially) -->
+  <div id="errorBlock" class="text-center p-4 mt-4 d-none">
+    <h2 class="fw-bold text-danger mb-3" style="font-size: 40px;">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>500 Internal Server Error!
+    </h2>
+    <p class="mb-2">Server encountered an error while downloading the files.</p>
+    <p class="mb-2">Updates failed!</p>
+    <p class="fw-bold mb-3">Please contact support to update required files.</p>
     
+    <div class="d-flex justify-content-center gap-3">
+      <a href="{{ url_for('contact') }}" class="btn btn-primary-blue">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</div>
+    <script>
+  document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+    submitBtn.disabled = true;
+    
+    // Submit form via AJAX
+    fetch(this.action, {
+      method: this.method,
+      body: new FormData(this),
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'error') {
+        document.getElementById("formBlock").classList.add("d-none");
+        document.getElementById("errorBlock").classList.remove("d-none");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.getElementById("formBlock").classList.add("d-none");
+      document.getElementById("errorBlock").classList.remove("d-none");
+    })
+    .finally(() => {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    });
+  });
+</script>
     <!-- Image Section -->
     <div class="col-lg-6 d-none d-lg-block">
       <div class="d-flex justify-content-center align-items-center h-100">

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Order Success - GetYourGps{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="card shadow-sm">
+                <div class="card-body py-5">
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h1 class="mb-3">Order Placed Successfully!</h1>
+                    <p class="lead mb-4">Thank you for your purchase. You will receive a confirmation email shortly.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary-blue">
+                            Continue Shopping
+                        </a>
+                        <a href="{{ url_for('shop') }}" class="btn btn-outline-primary-blue">
+                            View Products
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Clear cart from localStorage on success page
+    localStorage.removeItem('cart');
+    updateCartCount();
+</script>
+{% endblock %}

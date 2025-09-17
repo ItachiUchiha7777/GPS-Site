@@ -4,186 +4,191 @@
 
 {% block content %}
 <div class="container py-5">
-    <div class="row">
-        <!-- Left Column: Contact and Billing Information -->
-        <div class="col-lg-8">
-            <h1 class="mb-4">Checkout</h1>
-            
-            <!-- Contact Information -->
-            <div class="card mb-4">
-                <div class="card-header bg-light-green">
-                    <h5 class="mb-0">Contact information</h5>
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-info">
-                        <small>We'll use this email to send you details and updates about your order.</small>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address *</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="createAccount">
-                        <label class="form-check-label" for="createAccount">
-                            Create an account with GetYourGps
-                        </label>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Billing Address -->
-            <div class="card mb-4">
-                <div class="card-header bg-light-green">
-                    <h5 class="mb-0">Billing address</h5>
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-info">
-                        <small>Enter the billing address that matches your payment method.</small>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="firstName" class="form-label">First name *</label>
-                            <input type="text" class="form-control" id="firstName" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastName" class="form-label">Last name *</label>
-                            <input type="text" class="form-control" id="lastName" required>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address *</label>
-                        <input type="text" class="form-control" id="address" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="address2" class="form-label">Apartment, suite, etc. (optional)</label>
-                        <input type="text" class="form-control" id="address2">
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label for="country" class="form-label">Country/Region *</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Select a country...</option>
-                                <option value="US" selected>United States (US)</option>
-                                <option value="CA">Canada</option>
-                                <option value="UK">United Kingdom</option>
-                                <option value="AU">Australia</option>
-                                <option value="DE">Germany</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="city" class="form-label">City *</label>
-                            <input type="text" class="form-control" id="city" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="zipCode" class="form-label">ZIP Code *</label>
-                            <input type="text" class="form-control" id="zipCode" required>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="state" class="form-label">State *</label>
-                            <select class="form-select" id="state" required>
-                                <option value="">Select a state...</option>
-                                <option value="CA">California</option>
-                                <option value="TX">Texas</option>
-                                <option value="FL">Florida</option>
-                                <option value="NY">New York</option>
-                                <option value="IL">Illinois</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="phone" class="form-label">Phone (optional)</label>
-                            <input type="tel" class="form-control" id="phone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Payment Options -->
-            <div class="card mb-4">
-                <div class="card-header bg-light-green">
-                    <h5 class="mb-0">Payment options</h5>
-                </div>
-                <div class="card-body">
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="paypal" checked>
-                        <label class="form-check-label" for="paypal">
-                            <i class="bi bi-paypal me-2"></i>PayPal
-                        </label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard">
-                        <label class="form-check-label" for="creditCard">
-                            <i class="bi bi-credit-card me-2"></i>Credit Card
-                        </label>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Order Notes -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <label for="orderNotes" class="form-label">Add a note to your order (optional)</label>
-                    <textarea class="form-control" id="orderNotes" rows="3"></textarea>
-                </div>
-            </div>
-            
-            <div class="alert alert-light border">
-                <small>By proceeding with your purchase you agree to our <a href="{{ url_for('terms') }}">Terms and Conditions</a> and <a href="{{ url_for('privacy') }}">Privacy Policy</a></small>
-            </div>
-            
-            <div class="d-flex justify-content-between">
-                <a href="{{ url_for('cart') }}" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrow-left me-2"></i>Return to Cart
-                </a>
-                <button class="btn btn-success btn-lg" onclick="placeOrder()">
-                    Place Order
-                </button>
-            </div>
-        </div>
+    <form id="checkoutForm" method="POST" action="{{ url_for('checkout') }}">
+        {{ form.hidden_tag() if form }}
+        <input type="hidden" id="cartData" name="cartData" value="">
         
-        <!-- Right Column: Order Summary -->
-        <div class="col-lg-4">
-            <div class="card sticky-top" style="top: 20px;">
-                <div class="card-header bg-light-green">
-                    <h5 class="mb-0">Order summary</h5>
-                </div>
-                <div class="card-body">
-                    <div id="checkoutItems">
-                        <!-- Checkout items will be loaded dynamically with JavaScript -->
+        <div class="row">
+            <!-- Left Column: Contact and Billing Information -->
+            <div class="col-lg-8">
+                <h1 class="mb-4">Checkout</h1>
+                
+                <!-- Contact Information -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light-green">
+                        <h5 class="mb-0">Contact information</h5>
                     </div>
-                    
-                    <div class="mt-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Add coupons">
-                            <button class="btn btn-outline-secondary">Apply</button>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <small>We'll use this email to send you details and updates about your order.</small>
                         </div>
                         
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Subtotal:</span>
-                            <span id="checkoutSubtotal">$0.00</span>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Shipping:</span>
-                            <span class="text-success">FREE</span>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="createAccount">
+                            <label class="form-check-label" for="createAccount">
+                                Create an account with GetYourGps
+                            </label>
                         </div>
-                        <hr>
-                        <div class="d-flex justify-content-between mb-3">
-                            <strong>Total:</strong>
-                            <strong id="checkoutTotal">$0.00</strong>
+                    </div>
+                </div>
+                
+                <!-- Billing Address -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light-green">
+                        <h5 class="mb-0">Billing address</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <small>Enter the billing address that matches your payment method.</small>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First name *</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last name *</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address *</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address2" class="form-label">Apartment, suite, etc. (optional)</label>
+                            <input type="text" class="form-control" id="address2" name="address2">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="country" class="form-label">Country/Region *</label>
+                                <select class="form-select" id="country" name="country" required>
+                                    <option value="">Select a country...</option>
+                                    <option value="US" selected>United States (US)</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="city" class="form-label">City *</label>
+                                <input type="text" class="form-control" id="city" name="city" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zipCode" class="form-label">ZIP Code *</label>
+                                <input type="text" class="form-control" id="zipCode" name="zipCode" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="state" class="form-label">State *</label>
+                                <select class="form-select" id="state" name="state" required>
+                                    <option value="">Select a state...</option>
+                                    <option value="CA">California</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="NY">New York</option>
+                                    <option value="IL">Illinois</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone (optional)</label>
+                                <input type="tel" class="form-control" id="phone" name="phone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Options -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light-green">
+                        <h5 class="mb-0">Payment options</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="paypal" value="paypal" checked>
+                            <label class="form-check-label" for="paypal">
+                                <i class="bi bi-paypal me-2"></i>PayPal
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard">
+                            <label class="form-check-label" for="creditCard">
+                                <i class="bi bi-credit-card me-2"></i>Credit Card
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Notes -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <label for="orderNotes" class="form-label">Add a note to your order (optional)</label>
+                        <textarea class="form-control" id="orderNotes" name="orderNotes" rows="3"></textarea>
+                    </div>
+                </div>
+                
+                <div class="alert alert-light border">
+                    <small>By proceeding with your purchase you agree to our <a href="{{ url_for('terms') }}">Terms and Conditions</a> and <a href="{{ url_for('privacy') }}">Privacy Policy</a></small>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <a href="{{ url_for('cart') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Return to Cart
+                    </a>
+                    <button type="submit" class="btn btn-success btn-lg">
+                        Place Order
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Column: Order Summary -->
+            <div class="col-lg-4">
+                <div class="card sticky-top" style="top: 20px;">
+                    <div class="card-header bg-light-green">
+                        <h5 class="mb-0">Order summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="checkoutItems">
+                            <!-- Checkout items will be loaded dynamically with JavaScript -->
+                        </div>
+                        
+                        <div class="mt-3">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Add coupons">
+                                <button class="btn btn-outline-secondary">Apply</button>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="checkoutSubtotal">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Shipping:</span>
+                                <span class="text-success">FREE</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-3">
+                                <strong>Total:</strong>
+                                <strong id="checkoutTotal">$0.00</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 {% endblock %}
 
@@ -194,11 +199,15 @@
         const checkoutItemsContainer = document.getElementById('checkoutItems');
         const checkoutSubtotal = document.getElementById('checkoutSubtotal');
         const checkoutTotal = document.getElementById('checkoutTotal');
+        const cartDataInput = document.getElementById('cartData');
         
         if (cart.length === 0) {
             window.location.href = "{{ url_for('cart') }}";
             return;
         }
+        
+        // Store cart data in hidden input for form submission
+        cartDataInput.value = JSON.stringify(cart);
         
         let html = '';
         let subtotal = 0;
@@ -239,9 +248,11 @@
         checkoutTotal.textContent = `$${subtotal.toFixed(2)}`;
     }
     
-    function placeOrder() {
+    // Handle form submission
+    document.getElementById('checkoutForm').addEventListener('submit', function(e) {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         if (cart.length === 0) {
+            e.preventDefault();
             alert('Your cart is empty. Please add items to your cart before placing an order.');
             return;
         }
@@ -256,18 +267,15 @@
         const state = document.getElementById('state').value;
         
         if (!email || !firstName || !lastName || !address || !city || !zipCode || !state) {
+            e.preventDefault();
             alert('Please fill in all required fields.');
             return;
         }
         
-        // In a real application, you would process the order here
-        alert('Order placed successfully! Thank you for your purchase.');
-        
-        // Clear cart and redirect to home
+        // Clear cart after successful order
         localStorage.removeItem('cart');
         updateCartCount();
-        window.location.href = "{{ url_for('index') }}";
-    }
+    });
     
     function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
